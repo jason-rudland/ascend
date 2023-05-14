@@ -20,5 +20,5 @@ class Book extends Model
     {
         return $this->hasMany(Loan::class);
     }
-    
+
 }

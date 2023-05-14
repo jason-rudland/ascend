@@ -25,4 +25,9 @@ class Library extends Model
     {
         return $this->hasMany(Book::class)->where('loaned', false);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

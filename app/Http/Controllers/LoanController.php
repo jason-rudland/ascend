@@ -63,4 +63,5 @@ class LoanController extends Controller
     {
         //
     }
+
 }

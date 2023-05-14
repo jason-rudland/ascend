@@ -59,9 +59,22 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-//    public function books()
-//    {
-//        return $this->hasMany(Book::class);
-//    }
+    /**
+     * Return the libraries this user has joned
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function libraries()
+    {
+        return $this->belongsToMany(Library::class);
+    }
+
+    /**
+     * Return a list of the books this user has currently on loan
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function loan()
+    {
+        return $this->hasMany(Loan::class);
+    }
 
 }
