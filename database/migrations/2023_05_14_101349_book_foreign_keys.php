@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loans', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->unsignedBigInteger("book_id")->nullable();
-            $table->unsignedBigInteger("user_id")->nullable();
-            $table->string("action")->nullable();
+        Schema::table('books', function (Blueprint $table) {
+            $table->foreign('library_id')
+                ->references('id')->on('libraries');
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('loans');
+        Schema::table('books', function (Blueprint $table) {
+            $table->dropForeign(['library_id']);
+        });
     }
 };
